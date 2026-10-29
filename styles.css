@@ -42,6 +42,7 @@ body.tarot-mode #core-container { display: none; }
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    border-radius: 16px;
     background: #ffffff;
     border: 1px solid #eaeaea;
 }

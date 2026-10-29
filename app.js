@@ -34,6 +34,57 @@ document.addEventListener('DOMContentLoaded', () => {
             coreGrid.appendChild(div);
         });
     }
+// DENTRO DE TU document.addEventListener('DOMContentLoaded', () => { ... })
+const modalPuppet = document.getElementById('modal-puppet');
+const btnCerrarPuppet = document.getElementById('btn-cerrar-puppet');
+
+document.querySelectorAll('.core-puppet-card').forEach((card, index) => {
+    card.addEventListener('click', () => {
+        const puppet = dataPuppets[index];
+        if (puppet) {
+            document.getElementById('puppet-modal-img').src = puppet.img;
+            document.getElementById('puppet-modal-nombre').innerText = puppet.nombre;
+            document.getElementById('puppet-modal-desc').innerText = puppet.desc;
+            modalPuppet.style.display = 'flex';
+        }
+    });
+});
+
+if (btnCerrarPuppet) {
+    btnCerrarPuppet.addEventListener('click', () => {
+        modalPuppet.style.display = 'none';
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === modalPuppet) {
+        modalPuppet.style.display = 'none';
+    }
+});
+
+// INFORMACIÓN Y DESCRIPCIÓN DE LOS PUPPETS
+const dataPuppets = [
+    {
+        nombre: "CLASSIC",
+        img: "PP.png",
+        desc: "El lienzo blanco original de XPUPPET. Representa la neutralidad pura y la base sobre la cual se adaptan todas las identidades."
+    },
+    {
+        nombre: "XPUPPET1",
+        img: "PP_F1.png",
+        desc: "Inspirado en la cultura del automovilismo y la velocidad. Representa la adrenalina y el estilo urbano del motorsport."
+    },
+    {
+        nombre: "XMUSIC",
+        img: "PP_RAP.png",
+        desc: "Inspirado en la música y la cultura de calle. Representa el ritmo, el graffiti y el movimiento urbano."
+    },
+    {
+        nombre: "TAROTISTA",
+        img: "PP_TAROTISTA.png",
+        desc: "La versión mística del muñeco. Conecta directamente con la colección de los Arcanos, el destino y el oráculo."
+    }
+];
 
     // 2. NAVEGACIÓN CORE <-> TAROT
     const activarTarot = () => {

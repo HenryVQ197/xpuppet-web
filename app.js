@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             coreGrid.appendChild(div);
         });
     }
+
 // DENTRO DE TU document.addEventListener('DOMContentLoaded', () => { ... })
 const modalPuppet = document.getElementById('modal-puppet');
 const btnCerrarPuppet = document.getElementById('btn-cerrar-puppet');

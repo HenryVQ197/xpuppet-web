@@ -54,7 +54,7 @@ body.tarot-mode #core-container { display: none; }
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #1a1a1a;
-}.core-puppet-card img { width: 80%; object-fit: contain; }
+}.core-puppet-card img { width: 80%; object-fit: contain; border-radius: 16px; }
 
 /* CUADRÍCULA ESTRICTA */
 .core-product-grid {

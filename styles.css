@@ -1,0 +1,744 @@
+/* ==========================================
+ESTILOS GLOBALES Y MARCA XPUPPET (CORE)
+========================================== \*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Nunito:wght@300;400;600&family=Philosopher:wght@400;700&display=swap');
+
+body {
+margin: 0; padding: 0;
+background-color: #F4F4F4; color: #1A1A1A; font-family: 'Inter', sans-serif;
+transition: background-color 0.5s; overflow-x: hidden;
+}
+
+#core-container { width: 100%; display: block; }
+body.tarot-mode #core-container { display: none; }
+
+.core-navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
+.core-logo-text { font-size: 24px; font-weight: 800; letter-spacing: 1px; }
+.core-nav-links { display: flex; gap: 20px; align-items: center; }
+.core-nav-links a { text-decoration: none; color: #1A1A1A; font-weight: 600; font-size: 13px; letter-spacing: 1px; }
+
+.btn-tarot-highlight { background: #3b2340; border: 2px solid #d4af37; color: #d4af37; padding: 10px 20px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 12px; transition: all 0.3s; }
+.btn-tarot-highlight:hover { background: #d4af37; color: #1a0f1c; border-color: #1a0f1c; }
+.core-btn-outline { background: transparent; border: 2px solid #1A1A1A; color: #1A1A1A; padding: 10px 20px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-size: 12px; }
+
+.core-hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 60px 5%; min-height: 60vh; background-color: #fff; }
+.core-hero-left { flex: 1; min-width: 300px; display: flex; justify-content: center; }
+.core-hero-puppet { max-width: 80%; width: 400px; object-fit: contain; }
+.core-hero-right { flex: 1; min-width: 300px; padding: 20px; }
+.core-hero-title { font-size: 48px; font-weight: 800; margin: 0 0 20px 0; line-height: 1.1; font-family: 'Inter', sans-serif;}
+.core-hero-desc { font-size: 16px; color: #555; line-height: 1.6; max-width: 400px; margin-bottom: 30px; }
+.core-hero-buttons { display: flex; gap: 15px; }
+
+.core-banner { width: 100%; padding: 40px 5%; box-sizing: border-box; }
+.core-banner-placeholder { width: 100%; height: 300px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #888; font-weight: 600; letter-spacing: 2px; }
+
+.core-section { padding: 60px 5%; text-align: center; }
+.core-section-title { font-size: 24px; font-weight: 800; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; color: #1A1A1A; }
+
+.core-puppets-gallery { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; justify-content: center; }
+.core-puppet-card { min-width: 200px; width: 200px; height: 250px; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid #eaeaea; }
+.core-puppet-card img { width: 80%; object-fit: contain; }
+
+/* CUADRÍCULA ESTRICTA */
+.core-product-grid {
+display: grid;
+/* El secreto está en usar minmax(0, 1fr) para que las columnas nunca superen el ancho del contenedor */
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 30px;
+width: 100%;
+/* Un ancho máximo ayuda a mantener el diseño controlado en pantallas muy grandes \*/
+max-width: 1200px;
+margin: 0 auto;
+}
+
+@media (max-width: 1024px) { .core-product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .core-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .core-product-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.core-product-card {
+text-align: left;
+cursor: pointer;
+transition: opacity 0.3s;
+width: 100%;
+max-width: 100%;
+/* min-width: 0 evita que el contenedor se expanda por contenido grande */
+min-width: 0;
+/* overflow: hidden corta de raíz cualquier elemento que intente salirse \*/
+overflow: hidden;
+display: flex;
+flex-direction: column;
+}
+
+.core-product-card:hover {
+opacity: 0.8;
+}
+
+.core-product-card img {
+/* Forzamos el ancho y alto máximos para la imagen \*/
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+aspect-ratio: 3/4;
+object-fit: cover;
+background: #f0f0f0;
+margin-bottom: 15px;
+display: block;
+border-radius: 4px;
+}
+
+.core-product-info { display: flex; flex-direction: column; gap: 5px; }
+.core-product-title { font-size: 13px; font-weight: 800; text-transform: uppercase; color: #1A1A1A; }
+.core-product-price { font-size: 13px; font-weight: 600; color: #555; }
+
+.core-footer { text-align: center; padding: 60px 20px; background-color: #fff; border-top: 1px solid #ddd; }
+
+#btn-salir-tarot { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: 1px solid #fff; padding: 10px 15px; font-family: 'Inter', sans-serif; font-weight: bold; cursor: pointer; z-index: 1000; display: none; }
+body.tarot-mode #btn-salir-tarot { display: block; }
+
+/* ==========================================
+DISEÑO TAROT COMPLETO (DESKTOP)
+========================================== \*/
+body.tarot-mode {
+background-color: #150c18;
+background-image:
+radial-gradient(1px 1px at 10% 20%, #ffffff, transparent),
+radial-gradient(1.5px 1.5px at 30% 50%, #ffffff, transparent),
+radial-gradient(1px 1px at 60% 10%, #ffffff, transparent),
+radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,0.8), transparent),
+radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,0.6), transparent);
+background-size: 200px 200px;
+color: #fdf5e6;
+font-family: 'Nunito', sans-serif;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+min-height: 100vh;
+animation: moverEstrellas 150s linear infinite;
+}
+
+/* --- SCROLLBAR PERSONALIZADO --- \*/
+::-webkit-scrollbar {
+width: 8px;
+}
+::-webkit-scrollbar-track {
+background: #150c18;
+}
+::-webkit-scrollbar-thumb {
+background: #53355a;
+border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #d4af37;
+}
+
+@keyframes moverEstrellas {
+from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+to { background-position: -500px 500px, -400px 400px, -300px 300px, -200px 200px, -100px 100px; }
+}
+
+h2, h3, .menu-btn {
+font-family: 'Philosopher', sans-serif;
+}
+
+/* --- CAMBIO EN EL CONTENEDOR PRINCIPAL (DESKTOP) --- */
+#app-container {
+display: none; /* MAGIA: Oculta el tarot por defecto \*/
+width: 100%;
+max-width: 1200px;
+background-color: rgba(59, 35, 64, 0.85);
+backdrop-filter: blur(5px);
+min-height: 100vh;
+padding: 40px;
+box-sizing: border-box;
+text-align: center;
+flex-direction: column;
+position: relative;
+box-shadow: 0 0 30px rgba(0,0,0,0.8);
+margin: 20px auto;
+border-radius: 15px;
+}
+
+/* Solo mostramos el tarot cuando activamos el modo con el botón \*/
+body.tarot-mode #app-container {
+display: flex;
+}
+
+/* ==========================================
+ESTILOS NUEVOS PARA DESKTOP HOME
+========================================== \*/
+.desktop-home {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+width: 100%;
+}
+
+/* Header \*/
+.desktop-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+padding-bottom: 20px;
+border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+margin-bottom: 40px;
+}
+
+.logo-text {
+font-family: 'Philosopher', sans-serif;
+font-size: 28px;
+color: #d4af37;
+font-weight: bold;
+letter-spacing: 2px;
+}
+
+.desktop-nav {
+display: flex;
+gap: 25px;
+}
+
+.nav-btn-text {
+background: none;
+border: none;
+color: #fdf5e6;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+transition: color 0.3s;
+letter-spacing: 1px;
+}
+
+.nav-btn-text:hover {
+color: #d4af37;
+}
+
+/* Hero Section \*/
+.hero-section {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: center;
+width: 100%;
+margin-bottom: 50px;
+}
+
+.hero-left {
+display: flex;
+justify-content: center;
+}
+
+.hero-character {
+width: 100%;
+max-width: 450px;
+filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+}
+
+.hero-right {
+text-align: left;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.hero-title {
+font-family: 'Philosopher', sans-serif;
+font-size: 48px;
+color: #d4af37;
+margin-bottom: 15px;
+margin-top: 0;
+}
+
+.hero-text {
+font-size: 18px;
+line-height: 1.6;
+color: #e0d5e2;
+margin-bottom: 30px;
+}
+
+.hero-buttons {
+display: flex;
+gap: 15px;
+}
+
+.hero-buttons .menu-btn {
+height: 50px;
+padding: 0 25px;
+font-size: 15px;
+}
+
+/* --- Fila de ropa inferior --- \*/
+.ropa-preview-section {
+width: 100%;
+text-align: left;
+}
+
+.section-title {
+font-family: 'Philosopher', sans-serif;
+color: #d4af37;
+border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+padding-bottom: 10px;
+margin-bottom: 20px;
+}
+
+.ropa-row {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 25px;
+padding-bottom: 15px;
+}
+
+.ropa-minimal-card {
+background-color: transparent;
+border: none;
+padding: 0;
+cursor: pointer;
+transition: transform 0.3s ease;
+display: flex;
+flex-direction: column;
+}
+
+.ropa-minimal-card:hover {
+transform: translateY(-5px);
+}
+
+.ropa-minimal-card img {
+width: 100%;
+aspect-ratio: 4/5;
+object-fit: cover;
+border-radius: 4px;
+background-color: rgba(255, 255, 255, 0.03);
+}
+
+.ropa-minimal-info {
+display: flex;
+flex-direction: column;
+text-align: left;
+margin-top: 12px;
+gap: 4px;
+}
+
+.ropa-minimal-nombre {
+font-size: 11px;
+font-weight: 600;
+color: #fdf5e6;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.ropa-minimal-precio {
+font-size: 12px;
+color: #d4af37;
+}
+
+@media (max-width: 900px) {
+.ropa-row { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+}
+
+@media (max-width: 768px) {
+.hero-section {
+grid-template-columns: 1fr;
+}
+.desktop-header {
+flex-direction: column;
+gap: 15px;
+}
+}
+
+/* --- ANIMACIONES DE PANTALLA --- \*/
+.screen {
+display: none;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+flex-grow: 1;
+}
+
+.screen.active {
+display: flex;
+animation: fadeIn 0.4s ease-out forwards;
+}
+
+.screen.fade-out {
+display: flex;
+animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(15px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+from { opacity: 1; transform: translateY(0); }
+to { opacity: 0; transform: translateY(-15px); }
+}
+
+/* --- BOTONES BASE --- \*/
+.menu-btn {
+background-color: #d4af37;
+color: #1a0f1c;
+border: none;
+padding: 20px 10px;
+border-radius: 12px;
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+height: 80px;
+}
+
+.menu-btn:hover {
+background-color: #f5cc47;
+box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+transform: translateY(-2px);
+}
+.menu-btn:active { transform: scale(0.95); }
+
+/* --- GRIDS Y TARJETAS DE COLECCIONES --- \*/
+.coleccion-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+width: 100%;
+margin-bottom: 20px;
+}
+
+@media (max-width: 900px) { .coleccion-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .coleccion-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.item-card {
+background-color: #3b2340;
+border-radius: 8px;
+padding: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+border: 1px solid transparent;
+}
+
+.item-card:hover {
+transform: scale(1.05) translateY(-5px);
+border-color: #d4af37;
+box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.item-card img { width: 100%; aspect-ratio: 2/3; object-fit: contain; border-radius: 5px; }
+.ropa-card img { aspect-ratio: 1/1; }
+
+.item-title {
+font-size: 14px;
+margin-top: 8px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: #fdf5e6;
+}
+
+/* --- BOTONES SECUNDARIOS Y PAGINACIÓN --- \*/
+.paginacion-controls {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+margin-top: auto;
+padding-top: 20px;
+}
+
+.btn-nav, .btn-full {
+background-color: #53355a;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-nav { padding: 10px 15px; }
+.btn-nav:hover:not(:disabled) { background-color: #6a4473; transform: translateY(-2px); }
+.btn-nav:active:not(:disabled) { transform: scale(0.95); }
+.btn-nav:disabled { background-color: #2c1a30; color: #666; cursor: not-allowed; opacity: 0.7; }
+
+.btn-full {
+padding: 15px;
+width: 100%;
+max-width: 400px;
+margin-top: 10px;
+background-color: #d4af37;
+color: #1a0f1c;
+}
+.btn-full:hover { background-color: #f5cc47; }
+.btn-full:active { transform: scale(0.98); }
+
+/* --- PANTALLAS DE DETALLE --- \*/
+.detalle-img { width: 100%; max-width: 350px; object-fit: contain; border-radius: 10px; margin-bottom: 15px; }
+.detalle-box {
+background-color: rgba(255,255,255,0.08);
+padding: 20px;
+border-radius: 10px;
+width: 100%;
+max-width: 600px;
+box-sizing: border-box;
+margin-bottom: 20px;
+text-align: left;
+border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- LECTURA TAROT --- \*/
+.tarotista-img { width: 100%; max-width: 300px; margin-bottom: 20px; }
+.cartas-container { display: flex; justify-content: center; gap: 20px; perspective: 1000px; width: 100%; margin-bottom:20px; }
+
+.carta-card {
+width: 100%;
+max-width: 200px;
+aspect-ratio: 2/3;
+position: relative;
+cursor: pointer;
+transform-style: preserve-3d;
+transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+border-radius: 5px;
+}
+
+.carta-card:not(.volteada) .carta-face.carta-back {
+animation: resplandorCarta 2s infinite alternate;
+}
+
+@keyframes resplandorCarta {
+from { box-shadow: 0 0 5px rgba(212, 175, 55, 0.1); border: 1px solid transparent; }
+to { box-shadow: 0 0 20px rgba(212, 175, 55, 0.7); border: 1px solid rgba(212, 175, 55, 0.5); }
+}
+.carta-card:hover:not(.volteada) { transform: scale(1.05) translateY(-5px); }
+.carta-card.volteada { transform: rotateY(180deg); cursor: default; }
+
+.carta-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 5px; overflow: hidden; background-color: #3b2340; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+.carta-face img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carta-front { transform: rotateY(180deg); border: 1px solid #d4af37; box-sizing: border-box; }
+
+h2 { font-size: 28px; font-weight: normal; }
+h3 { font-size: 20px; margin: 5px 0;}
+p { font-size: 16px; line-height: 1.6;}
+
+/* ==========================================
+MODO COMPARTIR (IG STORIES)
+========================================== \*/
+.story-frame {
+width: 100%;
+max-width: 320px;
+margin: 0 auto;
+overflow: hidden;
+min-height: 550px;
+background: linear-gradient(135deg, rgba(26, 15, 28, 0.9), rgba(59, 35, 64, 0.9));
+border: 1px solid #d4af37;
+border-radius: 15px;
+padding: 20px;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+box-shadow: 0 0 25px rgba(0,0,0,0.8);
+position: relative;
+}
+
+.story-frame::before {
+content: '';
+position: absolute;
+top: -50%; left: -50%; width: 200%; height: 200%;
+background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 60%);
+z-index: 0;
+}
+
+.story-frame > \* { z-index: 1; }
+
+.story-frame h2 {
+color: #d4af37;
+margin-top: 10px;
+margin-bottom: 0;
+font-size: 22px;
+}
+
+.story-cards {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+margin: 15px 0;
+}
+
+.story-cards img {
+width: 33%;
+border-radius: 5px;
+border: 1px solid #d4af37;
+box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+.story-cards img:nth-child(1) { transform: rotate(-8deg) translateY(10px) translateX(10px); }
+.story-cards img:nth-child(2) { transform: scale(1.1); z-index: 2; }
+.story-cards img:nth-child(3) { transform: rotate(8deg) translateY(10px) translateX(-10px); }
+
+.story-text {
+background-color: rgba(0,0,0,0.5);
+padding: 15px;
+border-radius: 10px;
+font-style: italic;
+font-size: 12px;
+line-height: 1.4;
+text-align: center;
+border-top: 2px solid #d4af37;
+margin-bottom: 15px;
+width: 100%;
+box-sizing: border-box;
+display: block;
+}
+
+.story-brand {
+font-weight: bold;
+letter-spacing: 2px;
+font-size: 14px;
+background-color: #d4af37;
+color: #1a0f1c;
+padding: 5px 15px;
+border-radius: 20px;
+}
+
+/* ==========================================
+MODAL GUÍA DE TALLAS
+========================================== \*/
+.modal-overlay {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background-color: rgba(0,0,0,0.7);
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: center;
+backdrop-filter: blur(4px);
+border-radius: inherit;
+animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content {
+background-color: #1a0f1c;
+border: 1px solid #d4af37;
+border-radius: 12px;
+padding: 30px;
+width: 85%;
+max-width: 450px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+text-align: center;
+}
+
+.tabla-tallas { width: 100%; border-collapse: collapse; margin-top: 15px; color: #fdf5e6; }
+.tabla-tallas th, .tabla-tallas td { border: 1px solid rgba(212, 175, 55, 0.3); padding: 10px 5px; font-size: 14px; }
+.tabla-tallas th { background-color: rgba(212, 175, 55, 0.15); color: #d4af37; font-weight: bold; }
+
+/* ==========================================
+EASTER EGG: CARTA SECRETA
+========================================== \*/
+.carta-secreta-brillo .carta-front {
+animation: brilloSecreto 2s infinite alternate !important;
+border: 2px solid #fff !important;
+}
+
+@keyframes brilloSecreto {
+0% { box-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(212,175,55,0.5); transform: rotateY(180deg) scale(1); }
+100% { box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 40px rgba(212,175,55,1); transform: rotateY(180deg) scale(1.05); }
+}
+
+.animacion-revelacion-secreta {
+animation: brilloSecretoDetalle 2s infinite alternate !important;
+border: 2px solid #fff !important;
+border-radius: 10px;
+}
+
+@keyframes brilloSecretoDetalle {
+0% { box-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(212,175,55,0.5); transform: scale(1); }
+100% { box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 40px rgba(212,175,55,1); transform: scale(1.05); }
+}
+
+/* ==========================================
+BANNER FOTOGRÁFICO
+========================================== \*/
+.banner-modelos {
+position: relative;
+width: 100%;
+height: 450px;
+border-radius: 12px;
+overflow: hidden;
+margin-bottom: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.banner-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+transition: transform 0.6s ease;
+}
+
+.banner-modelos:hover .banner-img { transform: scale(1.03); }
+
+.banner-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+padding: 60px 20px 30px;
+background: linear-gradient(to top, rgba(21, 12, 24, 0.95), rgba(21, 12, 24, 0.6), transparent);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-end;
+}
+
+.banner-overlay h3 {
+font-family: 'Philosopher', sans-serif;
+font-size: 32px;
+color: #d4af37;
+margin: 0 0 20px 0;
+text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+
+.btn-banner {
+background-color: transparent;
+color: #fdf5e6;
+border: 1px solid #d4af37;
+padding: 12px 30px;
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+font-weight: bold;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+backdrop-filter: blur(2px);
+}
+
+.btn-banner:hover {
+background-color: #d4af37;
+color: #1a0f1c;
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 768px) {
+.banner-modelos { height: 300px; }
+.banner-overlay h3 { font-size: 24px; }
+}
+
+#pantalla-compartir {
+justify-content: flex-start !important;
+overflow-y: auto;
+padding-top: 30px;
+padding-bottom: 50px;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPUPPET | Streetwear & Tarot</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Nunito:wght@300;400;600&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button id="btn-salir-tarot">✖ VOLVER AL INICIO</button>
+
+    <!-- ========================================== -->
+    <!-- 1. LIENZO BLANCO (ESTILO CORE)             -->
+    <!-- ========================================== -->
+    <div id="core-container">
+        <nav class="core-navbar">
+            <div class="core-logo-text">XPUPPET</div>
+            <div class="core-nav-links">
+                <a href="#tienda-core">TIENDA</a>
+                <a href="https://instagram.com/xpuppet__" target="_blank">INSTAGRAM</a>
+                <button id="btn-nav-tarot" class="btn-tarot-highlight">COLECCIÓN TAROT</button>
+            </div>
+        </nav>
+
+        <section class="core-hero">
+            <div class="core-hero-left">
+                <img src="PP.png" alt="xpuppet base" class="core-hero-puppet" onerror="this.src='BASE.jpg'">
+            </div>
+            <div class="core-hero-right">
+                <h1 class="core-hero-title">EL LIENZO BLANCO.</h1>
+                <p class="core-hero-desc">
+                    xpuppet no es una temática fija. Es un personaje diseñado para adoptar cualquier identidad, forma y cultura. Somos la base de todas tus versiones.
+                </p>
+                <div class="core-hero-buttons">
+                    <button id="btn-enter-tarot-main" class="btn-tarot-highlight">EXPLORAR TAROT</button>
+                    <button class="core-btn-outline" onclick="window.open('https://instagram.com/xpuppet__', '_blank')">VISITAR INSTAGRAM</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="core-banner">
+            <div class="core-banner-placeholder">
+                <img src="banner_fotos_normal.png" alt="Modelos XPUPPET" class="banner-img" onerror="this.src='xpuppet_borde.jpg'">
+            </div>
+        </section>
+
+        <section class="core-section">
+            <h2 class="core-section-title">NUESTROS PUPPETS</h2>
+            <div class="core-puppets-gallery">
+                <div class="core-puppet-card"><img src="PP.png" alt="Puppet 1" onerror="this.src='BASE.jpg'"></div>
+                <div class="core-puppet-card"><img src="PP_F1.png" alt="Puppet 2" onerror="this.src='BASE.jpg'"></div>
+                <div class="core-puppet-card"><img src="PP_RAP.png" alt="Puppet 3" onerror="this.src='BASE.jpg'"></div>
+                <div class="core-puppet-card"><img src="PP_TAROTISTA.png" alt="Puppet 4" onerror="this.src='BASE.jpg'"></div>
+            </div>
+        </section>
+
+        <section id="tienda-core" class="core-section" style="background-color: #f7f7f7;">
+            <h2 class="core-section-title">NEW IN / ESENCIALES</h2>
+            <div class="core-product-grid" id="core-ropa-grid"></div>
+        </section>
+
+        <footer class="core-footer">
+            <h2>XPUPPET</h2>
+            <p>© 2026 Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. APP TAROT (MODO COLECCIÓN)              -->
+    <!-- ========================================== -->
+    <div id="app-container">
+
+        <!-- PANTALLA PRINCIPAL (HOME DESKTOP DEL TAROT) -->
+        <div id="pantalla-menu" class="screen active desktop-home">
+            <header class="desktop-header">
+                <div class="logo-text">TAROT X PUPPET</div>
+                <nav class="desktop-nav">
+                    <button class="nav-btn-text" id="btn-abrir-cartas-nav" onclick="abrirColeccionCartas()">CARTAS</button>
+                    <button class="nav-btn-text" id="btn-abrir-ropa-nav" onclick="abrirColeccionRopa()">TIENDA</button>
+                    <button class="nav-btn-text" id="btn-ig-nav" onclick="window.open('https://www.instagram.com/xpuppet__/', '_blank')">INSTAGRAM</button>
+                </nav>
+            </header>
+
+            <div class="hero-section">
+                <div class="hero-left">
+                    <img src="tarotista_mesa.png" alt="La Tarotista" class="hero-character" onerror="this.src='xpuppet_borde.jpg'">
+                </div>
+                <div class="hero-right">
+                    <h1 class="hero-title">El Oráculo Te Aguarda</h1>
+                    <p class="hero-text">
+                        Adéntrate en el misterio. Deja que las cartas revelen lo oculto y descubre una colección donde el arte oscuro, la obsesión y el destino se entrelazan en cada prenda.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="menu-btn nav-btn" data-target="pantalla-intro-tarot">🔮 LECTURA TAROT</button>
+                        <button class="menu-btn" id="btn-carta-dia">🃏 CARTA DEL DÍA</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ropa-preview-section">
+                <h2 class="section-title">Últimas Prendas</h2>
+                <div class="banner-modelos">
+                    <img src="modelos_banner.png" alt="Modelos XPUPPET" class="banner-img" onerror="this.src='xpuppet_borde.jpg'">
+                    <div class="banner-overlay">
+                        <h3>Colección Los Arcanos</h3>
+                        <button class="btn-banner" onclick="abrirColeccionRopa()">VER TODA LA ROPA</button>
+                    </div>
+                </div>
+                <div id="ropa-preview-grid" class="ropa-row"></div>
+            </div>
+        </div>
+
+        <!-- PANTALLA CARTA DEL DÍA -->
+        <div id="pantalla-carta-dia" class="screen">
+            <h2>Mensaje Diario</h2>
+            <p id="mensaje-estado-dia" style="font-size: 14px; color: #d4af37;">Toca la carta para recibir tu consejo de hoy.</p>
+            <div class="cartas-container" style="justify-content: center; margin-top: 20px;">
+                <div id="card-dia" class="carta-card" style="width: 50%; max-width: 180px;">
+                    <div class="carta-face carta-back"><img src="carta_dorso.png"></div>
+                    <div class="carta-face carta-front"><img id="img-carta-dia" src=""></div>
+                </div>
+            </div>
+            <div id="info-carta-dia" style="display:none; flex-direction:column; width:100%; align-items: center; text-align: left; margin-top: 20px;">
+                <div class="detalle-box" style="background-color: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37;">
+                    <h3 style="color:#d4af37; font-size: 18px; margin-top:0; text-align:center;" id="nombre-carta-dia"></h3>
+                    <p id="desc-carta-dia" style="font-size: 15px; text-align:center; margin-bottom: 0;"></p>
+                </div>
+            </div>
+            <button class="btn-full nav-btn" data-target="pantalla-menu" style="margin-top: 20px;">Volver al Menú</button>
+        </div>
+
+        <!-- COLECCIÓN DE CARTAS -->
+        <div id="pantalla-coleccion-cartas" class="screen">
+            <h2>Colección de Cartas</h2>
+            <div id="grid-cartas" class="coleccion-grid"></div>
+            <div class="paginacion-controls">
+                <button class="btn-nav" id="btn-prev-cartas">⬅️ Anterior</button>
+                <span id="texto-pag-cartas">1/3</span>
+                <button class="btn-nav" id="btn-next-cartas">Siguiente ➡️</button>
+            </div>
+            <button class="btn-nav nav-btn" data-target="pantalla-menu" style="margin-top: 15px;">Volver al Menú</button>
+        </div>
+
+        <!-- DETALLE DE CARTA -->
+        <div id="pantalla-detalle-carta" class="screen">
+            <h2 id="det-carta-nombre">NOMBRE CARTA</h2>
+            <img id="det-carta-img" src="" class="detalle-img">
+            <div class="detalle-box"><p id="det-carta-desc"></p></div>
+            <button class="btn-full nav-btn" data-target="pantalla-coleccion-cartas">Volver a la Colección</button>
+        </div>
+
+        <!-- COLECCIÓN DE ROPA -->
+        <div id="pantalla-coleccion-ropa" class="screen">
+            <h2>Colección XPUPPET</h2>
+            <div id="grid-ropa" class="coleccion-grid ropa-grid"></div>
+            <div class="paginacion-controls">
+                <button class="btn-nav" id="btn-prev-ropa">⬅️ Anterior</button>
+                <span id="texto-pag-ropa">1/2</span>
+                <button class="btn-nav" id="btn-next-ropa">Siguiente ➡️</button>
+            </div>
+            <button class="btn-nav nav-btn" data-target="pantalla-menu" style="margin-top: 15px;">Volver al Menú</button>
+        </div>
+
+        <!-- DETALLE DE ROPA -->
+        <div id="pantalla-detalle-ropa" class="screen">
+            <h2 id="det-ropa-nombre">NOMBRE PRENDA</h2>
+            <img id="det-ropa-img" src="" class="detalle-img">
+            <div class="detalle-box">
+                <h3 id="det-ropa-precio" style="color: #d4af37;">$ XXX.XXX</h3>
+                <p id="det-ropa-desc"></p>
+            </div>
+            <button class="btn-full" id="btn-guia-tallas" style="background-color: #2c1a30; border: 1px solid #d4af37; color: #d4af37; margin-bottom: 10px; padding: 12px; border-radius: 8px;">📏 Ver Guía de Tallas</button>
+            <button class="btn-full" id="btn-comprar-ropa" style="background-color: #E1306C; color: white; margin-bottom: 10px; border-radius: 8px;">📸 Pedir por Instagram</button>
+            <button class="btn-nav nav-btn" data-target="pantalla-coleccion-ropa" style="width: 100%; padding: 15px; border-radius: 8px;">Volver a la Tienda</button>
+        </div>
+
+        <!-- LECTURA DE TAROT -->
+        <div id="pantalla-intro-tarot" class="screen">
+            <img src="tarotista_cerca.png" class="tarotista-img" onerror="this.src='xpuppet_borde.jpg'">
+            <h2>Concéntrate en aquello que deseas saber.</h2>
+            <div style="width: 100%; text-align: left; margin: 15px 0;">
+                <label style="color:#d4af37; font-size: 14px; font-weight:bold;">¿Qué guía buscas hoy?</label>
+                <select id="select-tema" style="width: 100%; padding: 12px; margin-top: 8px; background-color: #3b2340; color: white; border: 1px solid #d4af37; border-radius: 8px; font-size: 16px; outline: none;">
+                    <option value="general">🔮 Lectura General</option>
+                    <option value="amor">❤️ Amor y Relaciones</option>
+                    <option value="trabajo">💰 Trabajo y Proyectos</option>
+                </select>
+                <p id="mensaje-limite-tarot" style="color: #ff6b6b; font-size: 13px; display: none; margin-top: 10px; font-weight: bold;"></p>
+            </div>
+            <button class="btn-full" id="btn-preparar-mazo">Barajar y Extraer Cartas</button>
+            <button class="btn-nav nav-btn" data-target="pantalla-menu" style="margin-top:15px; width:100%">Volver al Menú</button>
+        </div>
+
+        <div id="pantalla-resultado-tarot" class="screen">
+            <h3 id="instruccion-cartas-real">Toca cada carta para revelar tu Pasado, Presente y Futuro...</h3>
+            <div class="cartas-container">
+                <div id="card-pos-1" class="carta-card"><div class="carta-face carta-back"><img src="carta_dorso.png"></div><div class="carta-face carta-front"><img id="img-tirada-1" src=""></div></div>
+                <div id="card-pos-2" class="carta-card"><div class="carta-face carta-back"><img src="carta_dorso.png"></div><div class="carta-face carta-front"><img id="img-tirada-2" src=""></div></div>
+                <div id="card-pos-3" class="carta-card"><div class="carta-face carta-back"><img src="carta_dorso.png"></div><div class="carta-face carta-front"><img id="img-tirada-3" src=""></div></div>
+            </div>
+            
+            <div id="info-tirada" style="display:none; flex-direction:column; align-items: center; width:100%; text-align: center; padding-bottom: 30px;">
+                <div class="detalle-box"><h3 style="color:#d4af37; font-size: 14px; margin-top:0;">🌙 PASADO: <span id="nombre-pasado" style="color:#fff"></span></h3><p id="desc-pasado" style="font-size: 13px; margin-bottom:0;"></p></div>
+                <div class="detalle-box"><h3 style="color:#d4af37; font-size: 14px; margin-top:0;">👁️ PRESENTE: <span id="nombre-presente" style="color:#fff"></span></h3><p id="desc-presente" style="font-size: 13px; margin-bottom:0;"></p></div>
+                <div class="detalle-box"><h3 style="color:#d4af37; font-size: 14px; margin-top:0;">✨ FUTURO: <span id="nombre-futuro" style="color:#fff"></span></h3><p id="desc-futuro" style="font-size: 13px; margin-bottom:0;"></p></div>
+                <div class="detalle-box" style="background-color: rgba(212, 175, 55, 0.15); border-left: 3px solid #d4af37;">
+                    <h3 style="color:#d4af37; font-size: 15px; margin-top:0;">🔮 EL VEREDICTO DEL ORÁCULO</h3>
+                    <p id="desc-sintesis" style="font-size: 14px; margin-bottom:0; font-style: italic;"></p>
+                    <p id="mensaje-regreso-mañana" style="font-size: 12px; color: #ff9999; margin-top: 15px; text-align: center; display: none; font-weight: bold;">* Para consultar este tema nuevamente, el oráculo requiere que vuelvas mañana. *</p>
+                </div>
+                <button class="btn-full" id="btn-compartir" style="background-color: #E1306C; color: white; margin-bottom: 10px;">📸 Compartir en IG Stories</button>
+                <button class="btn-full nav-btn" data-target="pantalla-menu">Finalizar Lectura</button>
+            </div>
+        </div>
+
+        <!-- MODAL GUÍA DE TALLAS -->
+        <div id="modal-tallas" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <h3 id="titulo-tabla-tallas" style="color: #d4af37; margin-top: 0; font-family: 'Philosopher', serif;">Guía de Tallas</h3>
+                <table class="tabla-tallas" id="tabla-buzos" style="display: none;"><tr><th>Talla</th><th>Ancho (cm)</th><th>Largo (cm)</th></tr><tr><td>S</td><td>48</td><td>65</td></tr><tr><td>M</td><td>50</td><td>69</td></tr><tr><td>L</td><td>53</td><td>72</td></tr><tr><td>XL</td><td>58</td><td>73</td></tr></table>
+                <table class="tabla-tallas" id="tabla-camisa-hombre" style="display: none;"><tr><th>Talla</th><th>Ancho (cm)</th><th>Largo (cm)</th></tr><tr><td>S</td><td>48</td><td>68</td></tr><tr><td>M</td><td>51</td><td>70</td></tr><tr><td>L</td><td>54</td><td>72</td></tr><tr><td>XL</td><td>58</td><td>74</td></tr></table>
+                <table class="tabla-tallas" id="tabla-camisa-mujer" style="display: none;"><tr><th>Talla</th><th>Ancho (cm)</th><th>Largo (cm)</th></tr><tr><td>S</td><td>40</td><td>58</td></tr><tr><td>M</td><td>43</td><td>60</td></tr><tr><td>L</td><td>46</td><td>62</td></tr><tr><td>XL</td><td>49</td><td>64</td></tr></table>
+                <p style="font-size: 11px; font-style: italic; color: #aaa; margin-top: 10px;">*Medidas de costura a costura. Pueden variar +/- 2cm.</p>
+                <p id="nota-tallas-recomendacion" style="font-size: 11px; color: #d4af37; margin-top: 5px;"></p>
+                <button class="btn-full" id="btn-cerrar-tallas" style="background-color: #53355a; color: white; margin-top: 15px; padding: 10px; border-radius: 5px;">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- MODO HISTORIA (STORY) -->
+        <div id="pantalla-compartir" class="screen">
+            <p style="color: #d4af37; font-size: 14px; margin-bottom: 15px;">Toma captura de pantalla y etiquétanos en Instagram 🦇</p>
+            <div id="story-frame" class="story-frame">
+                <h2>El Oráculo ha hablado</h2>
+                <div class="story-cards">
+                    <img id="story-img-1" src="" onerror="this.src='carta_dorso.png'">
+                    <img id="story-img-2" src="" onerror="this.src='carta_dorso.png'">
+                    <img id="story-img-3" src="" onerror="this.src='carta_dorso.png'">
+                </div>
+                <div class="story-text">
+                    <p id="story-sintesis"></p>
+                </div>
+                <div class="story-brand">@xpuppet__</div>
+            </div>
+            <button id="btn-volver-resultados" class="btn-full" style="margin-top: 20px;">Volver a mis resultados</button>
+        </div>
+
+    </div> 
+
+    <!-- Scripts en orden de dependencia -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

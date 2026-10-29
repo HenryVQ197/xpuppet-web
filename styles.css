@@ -36,8 +36,24 @@ body.tarot-mode #core-container { display: none; }
 .core-section-title { font-size: 24px; font-weight: 800; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; color: #1A1A1A; }
 
 .core-puppets-gallery { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; justify-content: center; }
-.core-puppet-card { min-width: 200px; width: 200px; height: 250px; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid #eaeaea; }
-.core-puppet-card img { width: 80%; object-fit: contain; }
+.core-puppet-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+}
+
+.core-puppet-name {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+}.core-puppet-card img { width: 80%; object-fit: contain; }
 
 /* CUADRÍCULA ESTRICTA */
 .core-product-grid {

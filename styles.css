@@ -23,7 +23,7 @@ body.tarot-mode #core-container { display: none; }
 
 .core-hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 60px 5%; min-height: 60vh; background-color: #fff; }
 .core-hero-left { flex: 1; min-width: 300px; display: flex; justify-content: center; }
-.core-hero-puppet { max-width: 80%; width: 400px; object-fit: contain; }
+.core-hero-puppet { max-width: 80%; width: 400px; border-radius: 16px; object-fit: contain; }
 .core-hero-right { flex: 1; min-width: 300px; padding: 20px; }
 .core-hero-title { font-size: 48px; font-weight: 800; margin: 0 0 20px 0; line-height: 1.1; font-family: 'Inter', sans-serif;}
 .core-hero-desc { font-size: 16px; color: #555; line-height: 1.6; max-width: 400px; margin-bottom: 30px; }

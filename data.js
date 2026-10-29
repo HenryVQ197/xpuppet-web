@@ -2,10 +2,10 @@
 // ROPA PÁGINA PRINCIPAL (CORE / BLANCO)
 // ==========================================
 const dataRopaCore = [
-    { id: 101, nombre: "Camiseta Básica xpuppet", img: "camisa_basica.png", precio: "$ 65.000", desc: "El lienzo basico. Camiseta oversized esencial con logo sutil." },
-    { id: 102, nombre: "Hoodie 'Blank Canvas'", img: "BASE.jpg", precio: "$ 120.000", desc: "Buzo grueso negro. Minimalista, combinable con todo." },
-    { id: 103, nombre: "Pantalón Cargo Urbano", img: "BASE.jpg", precio: "$ 140.000", desc: "Corte recto, bolsillos amplios, para el día a día." },
-    { id: 104, nombre: "Tote Bag xpuppet", img: "BASE.jpg", precio: "$ 45.000", desc: "Lleva tu mundo en ella. Algodón resistente 100%." }
+    { id: 101, nombre: "Camiseta Básica xpuppet", img: "camisa_basica.png", precio: "$ 70.000", desc: "El lienzo basico. Camiseta oversized esencial con logo sutil." },
+    { id: 102, nombre: "Hoodie 'White Canvas'", img: "buzo_claro.png", precio: "$ 150.000", desc: "Buzo grueso de color gris claro. Minimalista, combinable con todo." },
+    { id: 103, nombre: "Camisa corta Breaker", img: "breaker_mujer.png", precio: "$ 65.000", desc: "Corte corto, estampado sencillo, para el día a día." },
+    { id: 104, nombre: "Camisa X1", img: "X1.png", precio: "$ 80.000", desc: "Camisa de la colección XPUPPET1. Estampado de alta calidad" }
 ];
 
 // ==========================================

@@ -5,7 +5,7 @@ const dataRopaCore = [
     { id: 101, nombre: "Camiseta Básica xpuppet", img: "camisa_basica.png", precio: "$ 70.000", desc: "El lienzo basico. Camiseta oversized esencial con logo sutil." },
     { id: 102, nombre: "Hoodie 'White Canvas'", img: "buzo_claro.png", precio: "$ 150.000", desc: "Buzo grueso de color gris claro. Minimalista, combinable con todo." },
     { id: 103, nombre: "Camisa corta Breaker", img: "breaker_mujer.png", precio: "$ 65.000", desc: "Corte corto, estampado sencillo, para el día a día." },
-    { id: 104, nombre: "Camisa X1", img: "X1.png", precio: "$ 80.000", desc: "Camisa de la colección XPUPPET1. Estampado de alta calidad" }
+    { id: 104, nombre: "Buzo Death Blanco", img: "buzo_death.png", precio: "$ 130.000", desc: "Buzo oversized blanco con estampado de la carta Death en la espalda." }
 ];
 
 // ==========================================
@@ -16,7 +16,10 @@ const dataRopa = [
     { id: 2, nombre: "Camiseta The High Priestess", img: "shirt_high.png", precio: "$ 75.000", desc: "Camiseta con corte urbano con estampado de The High Priestess en la espalda.", tipoTalla: "camisa-regular" },
     { id: 3, nombre: "Camisa The Hierophant", img: "shirt_sacerdote.png", precio: "$ 65.000", desc: "Camiseta con corte urbano corta con estampado de The Hierophant.", tipoTalla: "camisa-mujer"},
     { id: 4, nombre: "Camisa The Hermit", img: "shirt_hermit.png", precio: "$ 70.000", desc: "Camiseta con corte urbano con estampado de The Hermit en frente.", tipoTalla: "camisa-regular" },
-    { id: 5, nombre: "Camisa The Hanged Man", img: "shirt_hanged.png", precio: "$ 70.000", desc: "Camiseta con corte urbano con estampado de The Hanged Man en la espalda.", tipoTalla: "camisa-regular"}
+    { id: 5, nombre: "Camisa The Hanged Man", img: "shirt_hanged.png", precio: "$ 70.000", desc: "Camiseta con corte urbano con estampado de The Hanged Man en la espalda.", tipoTalla: "camisa-regular"},
+    { id: 6, nombre: "Buzo Death Blanco", img: "buzo_death.png", precio: "$ 130.000", desc: "Buzo oversized blanco con estampado de la carta Death en la espalda.", tipoTalla: "buzo" },
+    { id: 7, nombre: "Camiseta High Priestess Beige", img: "camisa_beige.png", precio: "$ 75.000", desc: "Camiseta urbana beige con estampado de The High Priestess en la espalda.", tipoTalla: "camisa-regular" },
+    { id: 8, nombre: "Camiseta High Priestess Oscura", img: "camisa_marron.png", precio: "$ 75.000", desc: "Camiseta urbana oscura con estampado de The High Priestess en la espalda.", tipoTalla: "camisa-regular" }
 ];
 
 // ==========================================

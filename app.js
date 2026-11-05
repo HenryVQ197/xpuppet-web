@@ -166,7 +166,7 @@ function renderRopaDestacada() {
     if (!grid) return; 
     
     grid.innerHTML = '';
-    const ropaDestacada = dataRopa.filter(prenda => [0, 3, 4, 5].includes(prenda.id));
+    const ropaDestacada = dataRopa.filter(prenda => [1, 6, 4, 5].includes(prenda.id));
     
     ropaDestacada.forEach(prenda => {
         const div = document.createElement('div');
